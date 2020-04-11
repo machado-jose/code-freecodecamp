@@ -1,0 +1,67 @@
+function sym() {
+
+  var args = Array.prototype.slice.call(arguments);
+
+  let array = [];
+  
+  args.forEach(arg=>{
+
+    if(array.length == 0){
+
+      array = verificationRepeatedValue(arg);
+
+    }else{
+
+      array = verificationTwoArray(array,verificationRepeatedValue(arg));
+      
+    } 
+
+  });
+
+  return array.sort();
+
+}
+
+function verificationRepeatedValue(arg){
+
+  let array = [];
+  let last_value;
+
+  arg.sort();
+
+  arg.forEach(val=>{
+
+    if(last_value == undefined || last_value != val){
+      last_value = val;
+      array.push(val);
+    };
+
+  });
+
+  return array;
+}
+
+function verificationTwoArray(array,arg){
+
+  for(let i = 0; i < arg.length;i++){
+
+    if(array.includes(arg[i])){
+
+      array = array.filter(function(value){
+        
+        return (arg[i] === value) ? false : true
+
+      });
+
+    }else{
+
+      array.push(arg[i]);
+
+    };
+
+  };
+
+  return array;
+}
+
+console.log(sym([1, 2, 3], [5, 2, 1, 4, 5]));

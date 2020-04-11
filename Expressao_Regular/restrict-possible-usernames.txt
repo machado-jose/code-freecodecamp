@@ -1,0 +1,17 @@
+let username = "JackOfAllTrades";
+let userCheck = /^[a-z](\d{2,}|[a-z]+\d*)$/i; // Change this line
+let result = userCheck.test(username);
+
+/**
+ * Code Explanation
+
+  ^ -> start of input
+  [a-z] -> first character is a letter
+  \d{2,0} -> ends with two or more numbers
+  | -> or
+  [a-z]+ -> has one or more letters next
+  \d* -> and ends with zero or more numbers
+  $ -> end of input
+  i -> ignore case of input
+
+ */
